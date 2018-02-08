@@ -7,6 +7,8 @@
 		msg += "It has [icon2html(src.head, user)] \a [src.head] on its head. \n"
 	if (wear_mask)
 		msg += "It has [icon2html(src.wear_mask, user)] \a [src.wear_mask] on its face.\n"
+	if (wear_neck)
+		msg += "It has \icon[src.wear_neck] \a [src.wear_neck] around its neck.\n"
 	if (l_hand)
 		msg += "It has [icon2html(src.l_hand, user)] \a [src.l_hand] in its left hand.\n"
 	if (r_hand)
