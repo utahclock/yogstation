@@ -194,7 +194,7 @@
 		return
 	/*
 	if(mode==-1)
-		to_chat(usr, "<font color='red'>The disposal units power is disabled.</font>")
+		to_chat(usr, "\red The disposal units power is disabled.")
 		return
 	*/
 	interact(user, 0)

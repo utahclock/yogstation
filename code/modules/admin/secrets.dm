@@ -266,7 +266,7 @@
 			var/result = input(usr, "Please choose a new species","Species") as null|anything in species_list
 			if(result)
 				log_admin("[key_name(usr)] turned all humans into [result]", 1)
-				message_admins("<font color='blue'>[key_name_admin(usr)] turned all humans into [result]</font>")
+				message_admins("\blue [key_name_admin(usr)] turned all humans into [result]")
 				var/newtype = species_list[result]
 				for(var/mob/living/carbon/human/H in mob_list)
 					H.set_species(newtype)

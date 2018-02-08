@@ -5,7 +5,6 @@ var/datum/subsystem/assets/SSasset
 	init_order = -3
 	flags = SS_NO_FIRE
 	var/list/cache = list()
-	var/list/preload = list()
 
 /datum/subsystem/assets/New()
 	NEW_SS_GLOBAL(SSasset)
@@ -15,10 +14,8 @@ var/datum/subsystem/assets/SSasset
 		var/datum/asset/A = new type()
 		A.register()
 
-	preload = cache.Copy() //don't preload assets generated during the round
-
 	for(var/client/C in clients)
 		// Doing this to a client too soon after they've connected can cause issues, also the proc we call sleeps.
 		spawn(10)
-			getFilesSlow(C, preload, FALSE)
+			getFilesSlow(C, cache, FALSE)
 	..()

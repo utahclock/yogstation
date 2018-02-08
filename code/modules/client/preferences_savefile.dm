@@ -239,7 +239,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["donor_hat"]			>> donor_hat
 	S["purrbation"]         >> purrbation
 	S["soundenv"]			>> soundenv
-	S["goonchat"]			>> goonchat
 
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
@@ -265,16 +264,15 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	donor_hat		= sanitize_integer(donor_hat, 0, donor_start_items.len, 0)
 	purrbation 		= sanitize_integer(purrbation, 0, 1, initial(purrbation))
 	soundenv		= sanitize_integer(soundenv, 0, 1, initial(soundenv))
-	goonchat		= sanitize_integer(goonchat, 0, 1, initial(goonchat))
 
-	return TRUE
+	return 1
 
 /datum/preferences/proc/save_preferences()
 	if(!path)
-		return FALSE
+		return 0
 	var/savefile/S = new /savefile(path)
 	if(!S)
-		return FALSE
+		return 0
 	S.cd = "/"
 
 	S["version"] << SAVEFILE_VERSION_MAX		//updates (or failing that the sanity checks) will ensure data is not invalid at load. Assume up-to-date
@@ -305,9 +303,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["donor_hat"]			<< donor_hat
 	S["purrbation"]			<< purrbation
 	S["soundenv"]			<< soundenv
-	S["goonchat"]			<< goonchat
 
-	return TRUE
+	return 1
 
 /datum/preferences/proc/load_character(slot)
 	if(!path)
