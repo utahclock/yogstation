@@ -415,7 +415,11 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 /proc/get_both_hands(mob/living/carbon/M)
 	var/list/hands = list(M.l_hand, M.r_hand)
-	return hands
+
+	if(hands)
+		return hands
+	else
+		return 0
 
 /mob/proc/reagent_check(datum/reagent/R) // utilized in the species code
 	return 1
@@ -512,6 +516,8 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 /mob/proc/is_holding_item_of_type(typepath)
 	for(var/obj/item/I in get_both_hands())
+		if(!I)
+			return
 		if(istype(I, typepath))
 			return I
 	return FALSE
